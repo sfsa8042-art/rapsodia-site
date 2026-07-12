@@ -20,7 +20,9 @@ export default function Footer() {
         </div>
 
         <nav aria-label="Навигация в подвале">
-          <ul className="grid grid-cols-2 gap-3">
+          {/* Polish: колоночный поток — каждая колонка читается сверху вниз
+              в порядке основной навигации (раньше row-major путал порядок) */}
+          <ul className="grid grid-flow-col grid-rows-4 gap-x-8 gap-y-3">
             {nav.map((item) => (
               <li key={item.href}>
                 <Link

@@ -48,12 +48,14 @@ export function ProcessBlock() {
   return (
     <section className="section-dense" aria-labelledby="process-h2">
       <Container>
-        <Reveal className="flex flex-col gap-4">
-          <h2 id="process-h2" className="type-h2">
+        <Reveal className="grid gap-x-10 gap-y-4 lg:grid-cols-12">
+          <h2 id="process-h2" className="type-h2 lg:col-span-5">
             {pg2.process.h2}
           </h2>
-          <p className="type-body text-ink-soft">{pg2.process.body}</p>
-          <p className="type-caption text-ink-soft">{pg2.process.stepsNote}</p>
+          <div className="flex flex-col gap-4 lg:col-span-6 lg:col-start-7">
+            <p className="type-body text-ink-soft">{pg2.process.body}</p>
+            <p className="type-caption text-ink-soft">{pg2.process.stepsNote}</p>
+          </div>
         </Reveal>
       </Container>
     </section>
@@ -89,17 +91,19 @@ export function BanketContactBlock() {
   return (
     <section className="section-dense" aria-labelledby="pg2-contact-h2">
       <Container>
-        <Reveal className="flex flex-col gap-4">
-          <h2 id="pg2-contact-h2" className="type-h2">
+        <Reveal className="grid gap-x-10 gap-y-4 lg:grid-cols-12">
+          <h2 id="pg2-contact-h2" className="type-h2 lg:col-span-5">
             {pg2.contact.h2}
           </h2>
-          <p className="type-body text-ink-soft">{pg2.contact.body}</p>
-          <a
-            href={site.phoneHref}
-            className="inline-flex h-(--control-h) min-w-(--control-min-w) items-center justify-center self-start rounded-md border border-action px-6 type-label text-action transition-colors duration-(--motion-fast) hover:border-action-hover hover:text-action-hover"
-          >
-            {pg2.contact.cta}
-          </a>
+          <div className="flex flex-col gap-4 lg:col-span-6 lg:col-start-7">
+            <p className="type-body text-ink-soft">{pg2.contact.body}</p>
+            <a
+              href={site.phoneHref}
+              className="inline-flex h-(--control-h) min-w-(--control-min-w) items-center justify-center self-start rounded-md border border-action px-6 type-label text-action transition-colors duration-(--motion-fast) hover:border-action-hover hover:text-action-hover"
+            >
+              {pg2.contact.cta}
+            </a>
+          </div>
         </Reveal>
       </Container>
     </section>
@@ -111,8 +115,8 @@ export function BanketContactBlock() {
 export function BanketFormBlock() {
   return (
     <section id="zayavka" className="section-loose" aria-labelledby="zayavka-h2">
-      <Container className="max-w-[760px]">
-        <div className="flex flex-col gap-8">
+      <Container>
+        <div className="mx-auto flex max-w-[680px] flex-col gap-8">
           <h2 id="zayavka-h2" className="type-h2">
             {pg2.form.h2}
           </h2>

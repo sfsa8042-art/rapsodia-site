@@ -132,51 +132,60 @@ export function AfishaTeaserBlock() {
   );
 }
 
-/* BLK-PG1-04 Повод/атмосфера: факты текстом, без иконок [DS 6] */
+/* BLK-PG1-04 Повод/атмосфера: факты текстом, без иконок [DS 6].
+ * Polish: редакционный 2-кол сплит (заголовок / текст) заполняет ширину
+ * десктопа — раньше текст жался влево, правая половина пустовала. */
 export function OccasionBlock() {
   return (
     <section className="section-dense" aria-labelledby="occasion-h2">
       <Container>
-        <Reveal className="flex flex-col gap-4">
-          <h2 id="occasion-h2" className="type-h2">
+        <Reveal className="grid gap-x-10 gap-y-4 lg:grid-cols-12">
+          <h2 id="occasion-h2" className="type-h2 lg:col-span-5">
             {pg1.occasion.h2}
           </h2>
-          <p className="type-body text-ink-soft">{pg1.occasion.body}</p>
+          <p className="type-body text-ink-soft lg:col-span-6 lg:col-start-7">
+            {pg1.occasion.body}
+          </p>
         </Reveal>
       </Container>
     </section>
   );
 }
 
-/* BLK-PG1-05 Доверие: минимальный режим до накопления отзывов [UX 8] */
+/* BLK-PG1-05 Доверие: минимальный режим до накопления отзывов [UX 8].
+ * Polish: тот же редакционный сплит, что и Повод. */
 export function TrustBlock() {
   return (
     <section className="section-dense" aria-labelledby="trust-h2">
       <Container>
-        <Reveal className="flex flex-col gap-4">
-          <h2 id="trust-h2" className="type-h2">
+        <Reveal className="grid gap-x-10 gap-y-4 lg:grid-cols-12">
+          <h2 id="trust-h2" className="type-h2 lg:col-span-5">
             {pg1.trust.h2}
           </h2>
-          <p className="type-body text-ink-soft">{pg1.trust.body}</p>
-          <a
-            href={site.gisUrl}
-            rel="noopener noreferrer"
-            className="type-label self-start text-action underline-offset-4 hover:underline"
-          >
-            {pg1.trust.cta} →
-          </a>
+          <div className="flex flex-col gap-4 lg:col-span-6 lg:col-start-7">
+            <p className="type-body text-ink-soft">{pg1.trust.body}</p>
+            <a
+              href={site.gisUrl}
+              rel="noopener noreferrer"
+              className="type-label self-start text-action underline-offset-4 hover:underline"
+            >
+              {pg1.trust.cta} →
+            </a>
+          </div>
         </Reveal>
       </Container>
     </section>
   );
 }
 
-/* BLK-PG1-06 Первичный CTA + FRM-1: спад плотности перед действием */
+/* BLK-PG1-06 Первичный CTA + FRM-1: спад плотности перед действием.
+ * Polish: форма центрируется в комфортной мере ~640px (раньше растягивалась
+ * на всю ширину контейнера — поля-переростки, ощущение незавершённости). */
 export function BookingBlock() {
   return (
     <section id="bron" className="section-loose" aria-labelledby="bron-h2">
-      <Container className="max-w-[760px]">
-        <div className="flex flex-col gap-8">
+      <Container>
+        <div className="mx-auto flex max-w-[640px] flex-col gap-8">
           <h2 id="bron-h2" className="type-h2">
             {pg1.booking.h2}
           </h2>
@@ -192,10 +201,11 @@ export function BookingBlock() {
   );
 }
 
-/* BLK-PG1-07 Вторичные пути: ровно 2 × CMP-6 */
+/* BLK-PG1-07 Вторичные пути: ровно 2 × CMP-6.
+ * Polish: pt-0 — не удваиваем разрыв после section-loose формы. */
 export function SecondaryPathsBlock() {
   return (
-    <section className="section-base" aria-label="Банкеты и меню">
+    <section className="section-base pt-0 lg:pt-0" aria-label="Банкеты и меню">
       <Container className="grid gap-6 sm:grid-cols-2">
         <TeaserCard {...pg1.teasers.banket} />
         <TeaserCard {...pg1.teasers.menu} />
