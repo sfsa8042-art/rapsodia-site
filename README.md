@@ -99,3 +99,32 @@ FRM-1 `/api/booking`, FRM-2 `/api/banket`: серверная валидация
 лид не теряется молча. Аналитика: события `frm*_submit/success/error`,
 `cta_*` пушатся в `window.dataLayer` (`lib/track.ts`) — подключение
 Метрики/GTM не требует правок компонентов.
+
+## Деплой на Vercel
+
+Zero-config: Next.js 16 App Router, ISR (`revalidate`) и оптимизация
+изображений работают на Vercel нативно. `vercel.json` фиксирует регион
+функций `fra1` (Франкфурт — ближе к аудитории и Telegram API).
+
+1. **Import** → vercel.com/new → выбрать репозиторий
+   `sfsa8042-art/rapsodia-site` (Production Branch: `main`, настройки
+   сборки не менять — автоопределение Next.js).
+2. **Environment Variables** (Production + Preview), см. `.env.example`:
+   - `TELEGRAM_BOT_TOKEN` — токен бота @Rapsodia_booking_bot;
+   - `TELEGRAM_CHAT_ID` — id чата-получателя заявок;
+   - `NEXT_PUBLIC_NOINDEX=1` — **обязательно для Production, пока сайт
+     на `*.vercel.app`** (условие QA: staging закрыт от индексации;
+     preview-деплои Vercel закрывает сам).
+3. **Deploy** → после деплоя руками проверить доставку: отправить
+   тестовую бронь с живого URL и убедиться, что заявка пришла в Telegram
+   (серверless-окружение ≠ локальное — проверка обязательна).
+4. **Переключение домена rapsodia.ru** (когда решат):
+   добавить домен в Vercel → Domains; **убрать** `NEXT_PUBLIC_NOINDEX`
+   из Production; настроить 301-редиректы со старых WordPress-URL
+   (`/menyu/`→`/menu`, `/kontakty/` — совпадает, `/afisha/`→`/afisha`,
+   `/galereya/`→`/galereya`, `/o-nas/`→`/o-nas`,
+   `/bronirovanie-stola/`→`/#bron`) — карта в Development-пакете (DEV-5).
+
+Чек-лист перед продакшеном: доставка обеих форм подтверждена скрином из
+Telegram · телефон/прайс меню сверены с клиентом · прогон на реальном
+iPhone/Android (условия QA §11).
