@@ -19,6 +19,7 @@ export function BanketHeroBlock() {
     <section className="section-loose overflow-x-clip max-lg:pt-8" aria-labelledby="pg2-h1">
       <Container className="grid items-center gap-10 lg:grid-cols-12">
         <div className="flex flex-col gap-6 lg:col-span-6">
+          <p className="type-eyebrow text-action">{pg2.hero.eyebrow}</p>
           <h1 id="pg2-h1" className="type-display">
             {pg2.hero.h1}
           </h1>

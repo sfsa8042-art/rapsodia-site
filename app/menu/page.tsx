@@ -6,6 +6,7 @@
 
 import type { Metadata } from "next";
 import { Container, ButtonLink } from "@/components/ui";
+import MediaModule from "@/components/MediaModule";
 import MobileActionBar from "@/components/MobileActionBar";
 import { menu } from "@/content/menu";
 import { site, pg1 } from "@/lib/content";
@@ -25,6 +26,16 @@ export default function MenuPage() {
           <h1 id="menu-h1" className="type-display">
             Меню — на дровах, гриле и из своей пекарни
           </h1>
+
+          {/* Атмосферный кадр кухни — визуальный якорь текстовой страницы */}
+          <MediaModule
+            src="/photos/kuhnya-pech.webp"
+            alt="Открытая кухня с дровяной печью в ресторане Рапсодия"
+            aspect="16/9"
+            missingLabel="Съёмка кухни готовится"
+            priority
+            sizes="(min-width: 1280px) 1216px, 100vw"
+          />
 
           {menu.length === 0 ? (
             <div className="flex flex-col gap-4">

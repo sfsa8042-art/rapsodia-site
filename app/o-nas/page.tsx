@@ -6,6 +6,7 @@
 
 import type { Metadata } from "next";
 import { Container, ButtonLink } from "@/components/ui";
+import MediaModule from "@/components/MediaModule";
 import MobileActionBar from "@/components/MobileActionBar";
 import { pg1, pg6, site } from "@/lib/content";
 
@@ -20,19 +21,31 @@ export default function AboutPage() {
   return (
     <main>
       <section className="section-base" aria-labelledby="about-h1">
-        <Container className="flex flex-col gap-6">
-          <h1 id="about-h1" className="type-display">
-            {pg6.h1}
-          </h1>
-          {pg6.body.map((p) => (
-            <p key={p.slice(0, 20)} className="type-body text-ink-soft">
-              {p}
-            </p>
-          ))}
-          <p className="type-caption text-ink-soft">{site.founded}</p>
-          <ButtonLink href="/#bron" className="self-start">
-            {pg1.hero.cta}
-          </ButtonLink>
+        <Container className="grid items-center gap-10 lg:grid-cols-12">
+          <div className="flex flex-col gap-6 lg:col-span-6">
+            <h1 id="about-h1" className="type-display">
+              {pg6.h1}
+            </h1>
+            {pg6.body.map((p) => (
+              <p key={p.slice(0, 20)} className="type-body text-ink-soft">
+                {p}
+              </p>
+            ))}
+            <p className="type-caption text-ink-soft">{site.founded}</p>
+            <ButtonLink href="/#bron" className="self-start">
+              {pg1.hero.cta}
+            </ButtonLink>
+          </div>
+          <div className="lg:col-span-6">
+            <MediaModule
+              src="/photos/zal-dnem.webp"
+              alt="Зал ресторана Рапсодия с открытой кухней и сценой"
+              aspect="4/3"
+              missingLabel="Съёмка зала готовится"
+              priority
+              sizes="(min-width: 1024px) 48vw, 100vw"
+            />
+          </div>
         </Container>
       </section>
       <MobileActionBar />

@@ -20,14 +20,25 @@ export default function Reveal({
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    const show = () => el.classList.add("is-visible");
+
+    // Фолбэк: без IntersectionObserver показываем сразу (не прячем контент)
+    if (typeof IntersectionObserver === "undefined") {
+      show();
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          el.classList.add("is-visible");
+          show();
           observer.disconnect();
         }
       },
-      { threshold: 0.12 }
+      // threshold 0 + нижний rootMargin: срабатывает, как только элемент
+      // чуть вошёл снизу — надёжнее 0.12 на высоких блоках и при прыжках
+      // по якорям/back-forward (12% высокого блока могли не набраться).
+      { threshold: 0, rootMargin: "0px 0px -64px 0px" }
     );
     observer.observe(el);
     return () => observer.disconnect();
