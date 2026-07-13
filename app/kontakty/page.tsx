@@ -1,7 +1,10 @@
 /*
  * PG-7 Контакты [UX 4]: заголовок-факт «Как до нас добраться» [COPY §5],
- * адрес, телефон, часы (type.numeric), ссылки на карты. Карта — ссылкой,
- * не встроенным виджетом (вес страницы) [DS 5, CMP-9].
+ * адрес, телефон, часы (type.numeric), ссылки на карты.
+ * Карта — официальный Яндекс-виджет с меткой заведения [ФАКТУРА:
+ * rapsodia.ru]; iframe с фиксированным аспектом (анти-CLS) и loading=lazy
+ * (не грузится до подхода к вьюпорту — бюджет страницы). Кнопка
+ * «Проложить маршрут» открывает Яндекс.Карты в режиме маршрута к точке.
  */
 
 import type { Metadata } from "next";
@@ -31,7 +34,15 @@ export default function ContactsPage() {
               <a href={site.phoneHref} className="type-numeric-display text-action hover:underline">
                 {site.phone}
               </a>
-              <div className="flex gap-5">
+              <a
+                href={site.yandexRoute}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-(--control-h) items-center justify-center self-start rounded-md bg-action px-6 type-label text-on-action transition-colors duration-(--motion-fast) hover:bg-action-hover"
+              >
+                Проложить маршрут
+              </a>
+              <div className="flex flex-wrap gap-5">
                 <a href={site.telegram} rel="noopener noreferrer" className="type-label text-action underline-offset-4 hover:underline">
                   Telegram
                 </a>
@@ -53,6 +64,18 @@ export default function ContactsPage() {
                 </div>
               ))}
             </dl>
+          </div>
+
+          {/* Официальная карта с меткой [ФАКТУРА: rapsodia.ru] */}
+          <div className="overflow-hidden rounded-lg border border-border-subtle">
+            <iframe
+              src={site.yandexMap}
+              title="Ресторан Рапсодия на карте — Зеленоград, ТЦ «Столица»"
+              loading="lazy"
+              className="aspect-[16/9] w-full lg:aspect-[21/9]"
+              style={{ border: 0 }}
+              allowFullScreen
+            />
           </div>
 
           <ButtonLink href="/#bron" className="self-start">

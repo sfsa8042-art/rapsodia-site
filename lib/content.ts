@@ -17,6 +17,12 @@ export const site = {
   vk: "https://vk.com/restoran_rapsodia",
   address: "Зеленоград, к2309а, ТЦ «Столица», 2 этаж",
   gisUrl: "https://2gis.ru/moscow/search/Рапсодия%20Зеленоград",
+  // [ФАКТУРА: официальная карта-конструктор и маршрут с живого rapsodia.ru,
+  // организация Яндекс.Карт oid=85995976245]
+  yandexMap:
+    "https://yandex.ru/map-widget/v1/?um=constructor%3A0eb657123aee5b12b57e9e53d33c4b6439bc198fd80af14a077df4893ef1214f&source=constructor",
+  yandexRoute:
+    "https://yandex.ru/maps/?ll=37.228269%2C55.958329&mode=routes&rtext=~55.964098%2C37.187136&rtt=auto&ruri=~ymapsbm1%3A%2F%2Forg%3Foid%3D85995976245&z=12.4",
   hours: [
     { days: "Пн–Чт, Вс", time: "12:00–23:00" },
     { days: "Пт–Сб", time: "12:00–04:00" },
@@ -51,8 +57,10 @@ export const pg1 = {
     cta: "Подписаться в Telegram",
   },
   afishaFull: {
-    // BLK-PG1-03, расширенный режим
-    h2: "Ближайшие вечера с живой музыкой",
+    // BLK-PG1-03, расширенный режим. Заголовок жанрово-нейтральный:
+    // реальная программа — «творческие вечера» (мастер-классы, квизы,
+    // караоke), а не только концерты [ФАКТУРА: Telegram-афиша].
+    h2: "Афиша ближайших вечеров",
     cta: "Забронировать стол на этот вечер",
   },
   occasion: {

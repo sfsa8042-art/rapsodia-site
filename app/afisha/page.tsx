@@ -30,9 +30,7 @@ export default function AfishaPage() {
           {/* CR-5: заголовок соответствует состоянию — пустой режим
               наследует честную интонацию минимального режима [COPY] */}
           <h1 id="afisha-h1" className="type-display">
-            {events.length === 0
-              ? pg1.afishaMin.h2
-              : "Ближайшие вечера с живой музыкой"}
+            {events.length === 0 ? pg1.afishaMin.h2 : pg1.afishaFull.h2}
           </h1>
 
           {events.length === 0 ? (
