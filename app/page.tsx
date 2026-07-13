@@ -1,15 +1,19 @@
 /*
- * PG-1 Главная [DS 7]: последовательность блоков SCN-1.
- * Hero → Механика (без разделителя) → ÷ Афиша ÷ Повод ÷ Доверие →
- * CTA (FRM-1) → Вторичные пути. Статический рендер.
+ * PG-1 Главная [DS 7]. Визуально усиленная последовательность (запрос
+ * владельца): Hero → полоса фактов → Механика → бенто «как проходит
+ * вечер» → Афиша → Повод(+фото) → атмосферная полоса → Доверие →
+ * CTA(FRM-1) → Вторичные пути. Статический рендер + ISR.
  */
 
 import type { Metadata } from "next";
 import {
   HeroBlock,
+  StatsBand,
   MechanicsBlock,
+  AtmosphereMosaic,
   AfishaTeaserBlock,
   OccasionBlock,
+  AtmosphereBand,
   TrustBlock,
   BookingBlock,
   SecondaryPathsBlock,
@@ -32,12 +36,13 @@ export default function HomePage() {
   return (
     <main>
       <HeroBlock />
+      <StatsBand />
       <MechanicsBlock />
+      <AtmosphereMosaic />
       <GrillDivider />
       <AfishaTeaserBlock />
-      <GrillDivider />
       <OccasionBlock />
-      <GrillDivider />
+      <AtmosphereBand />
       <TrustBlock />
       <BookingBlock />
       <SecondaryPathsBlock />

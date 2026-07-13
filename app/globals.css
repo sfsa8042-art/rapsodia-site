@@ -129,6 +129,26 @@ div[id] {
   hyphens: none;
 }
 
+/* type.hero — усиленный кегль только для hero главной (визуальный акцент,
+   запрос владельца «больше визуала»). 40@375 → 72@1280. */
+.type-hero {
+  font-family: var(--font-heading);
+  font-size: clamp(40px, 26px + 3.7vw, 72px);
+  line-height: 1.02;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  hyphens: none;
+}
+
+/* Надзаголовок: мелкий трекинг-капс над hero-заголовком */
+.type-eyebrow {
+  font-family: var(--font-numeric);
+  font-size: 13px;
+  line-height: 1.3;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
 .type-h2 {
   font-family: var(--font-heading);
   font-size: 22px;
