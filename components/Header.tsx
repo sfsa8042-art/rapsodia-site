@@ -9,7 +9,7 @@
  */
 
 import Link from "next/link";
-import Image from "next/image";
+import LogoMark from "@/components/LogoMark";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { nav, misc, pg1, pg2 } from "@/lib/content";
@@ -72,7 +72,7 @@ export default function Header() {
     <header className="sticky top-0 z-100 border-b border-border-subtle bg-env/92 backdrop-blur-sm">
       <div className="mx-auto flex h-16 w-full max-w-[1280px] items-center gap-4 px-4 lg:h-20 lg:px-8">
         <Link href="/" className="flex shrink-0 items-center gap-3" aria-label="Рапсодия — на главную">
-          <Image src="/logo.svg" alt="" width={40} height={51} priority />
+          <LogoMark />
           <span className="type-label hidden text-ink sm:block">Рапсодия</span>
         </Link>
 
@@ -127,7 +127,7 @@ export default function Header() {
       >
         <div className="flex h-16 items-center justify-between px-4">
           <Link href="/" onClick={closeMenu} className="flex items-center gap-3">
-            <Image src="/logo.svg" alt="" width={40} height={51} />
+            <LogoMark />
             <span className="type-label">Рапсодия</span>
           </Link>
           <button

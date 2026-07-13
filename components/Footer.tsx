@@ -4,7 +4,7 @@
  */
 
 import Link from "next/link";
-import Image from "next/image";
+import LogoMark from "@/components/LogoMark";
 import { nav, site } from "@/lib/content";
 
 export default function Footer() {
@@ -13,7 +13,7 @@ export default function Footer() {
       <div className="mx-auto grid w-full max-w-[1280px] gap-10 px-4 py-12 lg:grid-cols-3 lg:px-8 lg:py-16">
         <div className="flex flex-col gap-4">
           <Link href="/" className="flex items-center gap-3" aria-label="Рапсодия — на главную">
-            <Image src="/logo.svg" alt="" width={40} height={51} />
+            <LogoMark />
             <span className="type-label text-ink">Рапсодия</span>
           </Link>
           <p className="type-caption text-ink-soft">{site.founded}</p>
