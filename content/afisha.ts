@@ -17,6 +17,9 @@ export type AfishaEvent = {
   time: string; // "20:00"
   title: string;
   genre?: string;
+  // Платное событие с записью по телефону (мастер-класс, квиз) — CTA
+  // «Записаться», а не «Забронировать стол». Иначе — обычный вечер, бронь стола.
+  signup?: boolean;
 };
 
 export const afisha: AfishaEvent[] = [
@@ -25,12 +28,14 @@ export const afisha: AfishaEvent[] = [
     time: "20:00",
     title: "Арт-мастер-класс: трендовые коллажи с бокалом игристого",
     genre: "Творческий вечер · 8 мест",
+    signup: true,
   },
   {
     date: "2026-07-30",
     time: "20:00",
     title: "Семейный арт-мастер-класс: творим вместе с детьми",
     genre: "Творческий вечер · 8 мест",
+    signup: true,
   },
 ];
 

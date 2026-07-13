@@ -16,6 +16,7 @@ export default function Footer() {
             <LogoMark />
             <span className="type-label text-ink">Рапсодия</span>
           </Link>
+          <p className="type-body text-ink-soft">{site.tagline}</p>
           <p className="type-caption text-ink-soft">{site.founded}</p>
         </div>
 

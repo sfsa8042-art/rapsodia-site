@@ -10,6 +10,7 @@
 import type { Metadata } from "next";
 import { Container, ButtonLink } from "@/components/ui";
 import MobileActionBar from "@/components/MobileActionBar";
+import MapEmbed from "@/components/MapEmbed";
 import { site, pg1 } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -66,17 +67,12 @@ export default function ContactsPage() {
             </dl>
           </div>
 
-          {/* Официальная карта с меткой [ФАКТУРА: rapsodia.ru] */}
-          <div className="overflow-hidden rounded-lg border border-border-subtle">
-            <iframe
-              src={site.yandexMap}
-              title="Ресторан Рапсодия на карте — Зеленоград, ТЦ «Столица»"
-              loading="lazy"
-              className="aspect-[16/9] w-full lg:aspect-[21/9]"
-              style={{ border: 0 }}
-              allowFullScreen
-            />
-          </div>
+          {/* Официальная карта с меткой [ФАКТУРА: rapsodia.ru], по клику */}
+          <MapEmbed
+            src={site.yandexMap}
+            title="Ресторан Рапсодия на карте — Зеленоград, ТЦ «Столица»"
+            caption={site.address}
+          />
 
           <ButtonLink href="/#bron" className="self-start">
             {pg1.hero.cta}

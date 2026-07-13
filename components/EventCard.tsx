@@ -6,7 +6,7 @@
 
 import Link from "next/link";
 import type { AfishaEvent } from "@/content/afisha";
-import { pg1 } from "@/lib/content";
+import { pg1, site } from "@/lib/content";
 
 const months = [
   "января", "февраля", "марта", "апреля", "мая", "июня",
@@ -26,12 +26,22 @@ export default function EventCard({ event }: { event: AfishaEvent }) {
       </p>
       <h3 className="card-title line-clamp-2">{event.title}</h3>
       {event.genre && <p className="type-caption text-ink-soft">{event.genre}</p>}
-      <Link
-        href={`/?date=${event.date}#bron`}
-        className="type-label mt-auto text-action underline-offset-4 hover:underline"
-      >
-        {pg1.afishaFull.cta} →
-      </Link>
+      {event.signup ? (
+        // Платный мастер-класс/квиз — запись по телефону, не бронь стола
+        <a
+          href={site.phoneHref}
+          className="type-label mt-auto text-action underline-offset-4 hover:underline"
+        >
+          Записаться по телефону →
+        </a>
+      ) : (
+        <Link
+          href={`/?date=${event.date}#bron`}
+          className="type-label mt-auto text-action underline-offset-4 hover:underline"
+        >
+          {pg1.afishaFull.cta} →
+        </Link>
+      )}
     </article>
   );
 }
