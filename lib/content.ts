@@ -13,6 +13,8 @@ export const site = {
   // [ФАКТУРА: живой сайт rapsodia.ru, снято QA 12.07.2026 — DEF-1]
   phone: "+7 (926) 944-99-99",
   phoneHref: "tel:+79269449999",
+  email: "info@rapsodia.ru", // [ФАКТУРА: живой сайт rapsodia.ru, /kontakty]
+  emailHref: "mailto:info@rapsodia.ru",
   telegram: "https://t.me/fazendazel", // [ТЕХ: текущий канал; RSK-3 — смена адреса на стороне клиента]
   vk: "https://vk.com/restoran_rapsodia",
   address: "Зеленоград, к2309а, ТЦ «Столица», 2 этаж",

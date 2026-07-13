@@ -35,6 +35,9 @@ export default function ContactsPage() {
               <a href={site.phoneHref} className="type-numeric-display text-action hover:underline">
                 {site.phone}
               </a>
+              <a href={site.emailHref} className="type-body text-action underline-offset-4 hover:underline">
+                {site.email}
+              </a>
               <a
                 href={site.yandexRoute}
                 target="_blank"
