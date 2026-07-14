@@ -24,8 +24,9 @@ import { upcoming } from "@/content/afisha";
 export function HeroBlock() {
   return (
     <section className="section-loose overflow-x-clip max-lg:pt-8" aria-labelledby="hero-h1">
-      <Container className="grid items-center gap-10 lg:grid-cols-12">
-        <div className="flex flex-col gap-6 lg:col-span-5 max-lg:order-2">
+      <Container className="grid items-center gap-8 lg:grid-cols-12 lg:gap-10">
+        {/* Мобайл: текст первым — слоган и оффер сразу видны, не под сгибом */}
+        <div className="flex flex-col gap-5 lg:col-span-5 lg:gap-6">
           <p className="type-eyebrow text-action">{pg1.hero.eyebrow}</p>
           <h1 id="hero-h1" className="type-hero">
             {pg1.hero.h1line1}
@@ -43,7 +44,7 @@ export function HeroBlock() {
             </Link>
           </div>
         </div>
-        <div className="lg:col-span-7 max-lg:order-1 lg:mr-[calc(50%-50vw)]">
+        <div className="lg:col-span-7 lg:mr-[calc(50%-50vw)]">
           {/* LCP-образ: официальное фото с rapsodia.ru — печь с огнём */}
           <MediaModule
             src="/photos/pech-ogon.jpg"
@@ -52,7 +53,7 @@ export function HeroBlock() {
             missingLabel="Съёмка зала готовится"
             priority
             sizes="(min-width: 1024px) 62vw, 100vw"
-            className="max-lg:aspect-[3/4] lg:aspect-auto lg:h-[min(74vh,720px)] lg:rounded-r-none"
+            className="lg:aspect-auto lg:h-[min(74vh,720px)] lg:rounded-r-none"
           />
         </div>
       </Container>
@@ -94,7 +95,9 @@ export function AtmosphereMosaic() {
           </p>
         </Reveal>
         <Reveal className="grid gap-4 lg:grid-cols-3 lg:grid-rows-2">
-          <MosaicTile tile={big} className="lg:col-span-2 lg:row-span-2 lg:min-h-[30rem]" priority />
+          {/* Мобайл: большая плитка выше второстепенных (иерархия);
+              десктоп: span 2×2 */}
+          <MosaicTile tile={big} className="min-h-80 lg:col-span-2 lg:row-span-2 lg:min-h-[30rem]" priority />
           <MosaicTile tile={rest[0]} className="min-h-64" />
           <MosaicTile tile={rest[1]} className="min-h-64" />
         </Reveal>

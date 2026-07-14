@@ -133,8 +133,8 @@ div[id] {
    запрос владельца «больше визуала»). 40@375 → 72@1280. */
 .type-hero {
   font-family: var(--font-heading);
-  font-size: clamp(40px, 26px + 3.7vw, 72px);
-  line-height: 1.02;
+  font-size: clamp(34px, 20px + 4vw, 72px); /* 34@375 → 72@1280 */
+  line-height: 1.04;
   font-weight: 700;
   letter-spacing: -0.02em;
   hyphens: none;
