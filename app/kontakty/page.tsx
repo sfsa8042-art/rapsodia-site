@@ -8,7 +8,7 @@
  */
 
 import type { Metadata } from "next";
-import { Container, ButtonLink } from "@/components/ui";
+import { Container, ButtonLink, PageHeader } from "@/components/ui";
 import MobileActionBar from "@/components/MobileActionBar";
 import MapEmbed from "@/components/MapEmbed";
 import { site, pg1 } from "@/lib/content";
@@ -25,9 +25,9 @@ export default function ContactsPage() {
     <main>
       <section className="section-base" aria-labelledby="contacts-h1">
         <Container className="flex flex-col gap-8">
-          <h1 id="contacts-h1" className="type-display">
+          <PageHeader eyebrow="Зеленоград · ТЦ «Столица» · 2 этаж" id="contacts-h1">
             Как до нас добраться
-          </h1>
+          </PageHeader>
 
           <div className="grid gap-10 lg:grid-cols-2">
             <div className="flex flex-col gap-4">

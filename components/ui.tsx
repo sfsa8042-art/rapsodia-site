@@ -114,6 +114,34 @@ export function SectionHeading({
   );
 }
 
+/*
+ * Редакционная шапка страницы [Redesign v3]: eyebrow с линейкой + h1-антиква.
+ * Единый вход всех внутренних страниц — тот же язык, что hero главной.
+ */
+export function PageHeader({
+  eyebrow,
+  id,
+  className = "",
+  children,
+}: {
+  eyebrow: string;
+  id: string;
+  className?: string;
+  children: ReactNode;
+}) {
+  return (
+    <div className={`flex flex-col gap-4 ${className}`}>
+      <p className="flex items-center gap-3 type-eyebrow text-action">
+        <span aria-hidden className="h-px w-10 shrink-0 bg-border-subtle" />
+        {eyebrow}
+      </p>
+      <h1 id={id} className="type-display">
+        {children}
+      </h1>
+    </div>
+  );
+}
+
 /* CMP-7 Divider — решётчатый мотив, только между section.dense [DS 5] */
 export function GrillDivider() {
   return (

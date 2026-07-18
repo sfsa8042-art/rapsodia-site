@@ -14,7 +14,7 @@ export default function Footer() {
         <div className="flex flex-col gap-4">
           <Link href="/" className="flex items-center gap-3" aria-label="Рапсодия — на главную">
             <LogoMark />
-            <span className="type-label text-ink">Рапсодия</span>
+            <span className="type-wordmark text-ink">Рапсодия</span>
           </Link>
           {/* Redesign v3: тэглайн — антиква-курсив, фирменная интонация */}
           <p className="card-title italic text-ink-soft">{site.tagline}</p>

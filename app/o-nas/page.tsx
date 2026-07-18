@@ -5,7 +5,7 @@
  */
 
 import type { Metadata } from "next";
-import { Container, ButtonLink } from "@/components/ui";
+import { Container, ButtonLink, PageHeader } from "@/components/ui";
 import MediaModule from "@/components/MediaModule";
 import MobileActionBar from "@/components/MobileActionBar";
 import { pg1, pg6, site } from "@/lib/content";
@@ -23,9 +23,9 @@ export default function AboutPage() {
       <section className="section-base" aria-labelledby="about-h1">
         <Container className="grid items-center gap-10 lg:grid-cols-12">
           <div className="flex flex-col gap-6 lg:col-span-6">
-            <h1 id="about-h1" className="type-display">
+            <PageHeader eyebrow="Кухня и сцена — одна идея" id="about-h1">
               {pg6.h1}
-            </h1>
+            </PageHeader>
             {pg6.body.map((p) => (
               <p key={p.slice(0, 20)} className="type-body text-ink-soft">
                 {p}

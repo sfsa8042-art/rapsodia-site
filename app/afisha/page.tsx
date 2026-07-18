@@ -4,7 +4,7 @@
  */
 
 import type { Metadata } from "next";
-import { Container, ButtonLink } from "@/components/ui";
+import { Container, ButtonLink, PageHeader } from "@/components/ui";
 import EventCard from "@/components/EventCard";
 import MobileActionBar from "@/components/MobileActionBar";
 import { upcoming } from "@/content/afisha";
@@ -29,9 +29,9 @@ export default function AfishaPage() {
         <Container className="flex flex-col gap-8">
           {/* CR-5: заголовок соответствует состоянию — пустой режим
               наследует честную интонацию минимального режима [COPY] */}
-          <h1 id="afisha-h1" className="type-display">
+          <PageHeader eyebrow="Пятница · Суббота · Живой звук" id="afisha-h1">
             {events.length === 0 ? pg1.afishaMin.h2 : pg1.afishaFull.h2}
-          </h1>
+          </PageHeader>
 
           {events.length === 0 ? (
             <div className="flex flex-col gap-4">
