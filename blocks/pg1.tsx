@@ -75,7 +75,17 @@ export function StatsBand() {
       <Container className="grid grid-cols-2 gap-x-6 gap-y-8 py-10 lg:grid-cols-4 lg:py-12">
         {pg1.stats.map((s) => (
           <div key={s.label} className="flex flex-col gap-1">
-            <span className="type-numeric-display text-ember">{s.value}</span>
+            {/* Executive Polish: моно-цифра только у подлинных метрик,
+                словесные факты — обычным лейблом [визуальная находка №4] */}
+            <span
+              className={
+                s.numeric
+                  ? "type-numeric-display text-ember"
+                  : "card-title text-ember"
+              }
+            >
+              {s.value}
+            </span>
             <span className="type-caption text-ink-soft">{s.label}</span>
           </div>
         ))}
@@ -100,13 +110,15 @@ export function AtmosphereMosaic() {
             {pg1.atmosphere.lead}
           </p>
         </Reveal>
-        <Reveal className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2">
-          {/* Мобайл: большая плитка выше второстепенных (иерархия);
-              планшет 768 (Аудит-3): большая на всю ширину, две в ряд под ней;
-              десктоп: span 2×2 */}
-          <MosaicTile tile={big} className="min-h-80 md:col-span-2 lg:row-span-2 lg:min-h-[30rem]" priority />
-          <MosaicTile tile={rest[0]} className="min-h-64" />
-          <MosaicTile tile={rest[1]} className="min-h-64" />
+        <Reveal className="grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2">
+          {/* Executive Polish: асимметрия — фирменный визуальный ход —
+              теперь видна с 375px, а не только с 768: большая плитка на
+              всю ширину, две второстепенные в паре под ней, а не полным
+              вертикальным стеком [визуальная находка №2].
+              Планшет 768: та же схема, крупнее. Десктоп: span 2×2. */}
+          <MosaicTile tile={big} className="col-span-2 min-h-72 md:col-span-2 lg:row-span-2 lg:min-h-[30rem]" priority />
+          <MosaicTile tile={rest[0]} className="min-h-48 lg:min-h-64" />
+          <MosaicTile tile={rest[1]} className="min-h-48 lg:min-h-64" />
         </Reveal>
       </Container>
     </section>

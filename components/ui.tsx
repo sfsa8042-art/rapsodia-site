@@ -143,6 +143,34 @@ export function PageHeader({
   );
 }
 
+/*
+ * Executive Polish: вторая, более редкая шапка — для эмоциональных
+ * страниц (О нас), где линейка+индекс PageHeader/SectionHeading уже
+ * встречены на утилитарных страницах и начинают читаться как один
+ * компонент, применённый везде. Здесь вместо hairline+caps — курсивная
+ * антиква-затравка над заголовком, без линии и без мото-индекса.
+ */
+export function PageHeaderEditorial({
+  lead,
+  id,
+  className = "",
+  children,
+}: {
+  lead: string;
+  id: string;
+  className?: string;
+  children: ReactNode;
+}) {
+  return (
+    <div className={`flex flex-col gap-2 ${className}`}>
+      <p className="type-h2 italic text-ember">{lead}</p>
+      <h1 id={id} className="type-display">
+        {children}
+      </h1>
+    </div>
+  );
+}
+
 /* CMP-7 Divider — решётчатый мотив, только между section.dense [DS 5] */
 export function GrillDivider() {
   return (

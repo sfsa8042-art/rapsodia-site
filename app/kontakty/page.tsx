@@ -25,17 +25,21 @@ export default function ContactsPage() {
     <main>
       <section className="section-base" aria-labelledby="contacts-h1">
         <Container className="flex flex-col gap-8">
-          <PageHeader eyebrow="Зеленоград · ТЦ «Столица» · 2 этаж" id="contacts-h1">
+          {/* Executive Polish: eyebrow больше не дублирует адрес строкой
+              ниже — несёт новый факт (часы) */}
+          <PageHeader eyebrow="Пн–Чт, Вс до 23:00 · Пт–Сб до 04:00" id="contacts-h1">
             Как до нас добраться
           </PageHeader>
 
           <div className="grid gap-10 lg:grid-cols-2">
             <div className="flex flex-col gap-4">
               <p className="type-body">{site.address}</p>
-              <a href={site.phoneHref} className="type-numeric-display text-action hover:underline">
+              {/* Executive Polish: телефон/почта — нейтральные, зелёный
+                  остаётся только у кнопки маршрута (одна точка конверсии) */}
+              <a href={site.phoneHref} className="type-numeric-display text-ink hover:underline">
                 {site.phone}
               </a>
-              <a href={site.emailHref} className="type-body text-action underline-offset-4 hover:underline">
+              <a href={site.emailHref} className="type-body text-ink underline-offset-4 hover:underline">
                 {site.email}
               </a>
               <a
