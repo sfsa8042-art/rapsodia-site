@@ -28,7 +28,8 @@ export default function TeaserCard({
     return (
       <Link
         href={href}
-        className="group relative flex min-h-64 flex-col justify-end overflow-hidden rounded-lg p-6 lg:min-h-72 lg:p-8"
+        // Ревью: белое фокус-кольцо — чернильное невидимо на тёмном фото
+        className="group focus-ring-photo relative flex min-h-64 flex-col justify-end overflow-hidden rounded-lg p-6 lg:min-h-72 lg:p-8"
       >
         <Image
           src={image}

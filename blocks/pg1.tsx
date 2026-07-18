@@ -27,7 +27,8 @@ export function HeroBlock() {
       <Container className="grid items-center gap-8 lg:grid-cols-12 lg:gap-10">
         {/* Мобайл: текст первым — слоган и оффер сразу видны, не под сгибом */}
         <div className="flex flex-col gap-5 lg:col-span-5 lg:gap-6">
-          <p className="flex items-center gap-3 type-eyebrow text-action">
+          {/* Ревью [KB 05]: CTA-цвет только на конверсии — eyebrow нейтральный */}
+          <p className="flex items-center gap-3 type-eyebrow text-ink-soft">
             <span aria-hidden className="h-px w-10 shrink-0 bg-border-subtle" />
             {pg1.hero.eyebrow}
           </p>
@@ -124,7 +125,9 @@ function MosaicTile({
   return (
     <Link
       href={tile.href}
-      className={`group relative flex min-h-56 flex-col justify-end overflow-hidden rounded-lg p-6 ${className}`}
+      // Ревью: фокус-кольцо среды (тёмные чернила) невидимо на тёмном
+      // фото — у фото-плиток кольцо белое
+      className={`group focus-ring-photo relative flex min-h-56 flex-col justify-end overflow-hidden rounded-lg p-6 ${className}`}
     >
       <Image
         src={tile.src}

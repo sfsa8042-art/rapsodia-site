@@ -141,6 +141,13 @@ button:not(:disabled),
   border-radius: var(--radius-sm);
 }
 
+/* Ревью: на фото-плитках кольцо среды (тёмные чернила) невидимо на
+   тёмном кадре — белое. Литерал, не var: @theme inline не эмитит
+   --color-white (та же ловушка, что со шрифтовыми ролями) */
+.focus-ring-photo:focus-visible {
+  outline-color: #fff;
+}
+
 /* ---------- Типографские роли [DS 3] ---------- */
 
 /* Кегли подняты ~30% против гротеска Golos — антиква Cormorant

@@ -19,7 +19,8 @@ export function BanketHeroBlock() {
     <section className="section-loose overflow-x-clip max-lg:pt-8" aria-labelledby="pg2-h1">
       <Container className="grid items-center gap-10 lg:grid-cols-12">
         <div className="flex flex-col gap-6 lg:col-span-6">
-          <p className="flex items-center gap-3 type-eyebrow text-action">
+          {/* Ревью [KB 05]: CTA-цвет только на конверсии — eyebrow нейтральный */}
+          <p className="flex items-center gap-3 type-eyebrow text-ink-soft">
             <span aria-hidden className="h-px w-10 shrink-0 bg-border-subtle" />
             {pg2.hero.eyebrow}
           </p>

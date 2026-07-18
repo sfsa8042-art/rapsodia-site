@@ -131,7 +131,8 @@ export function PageHeader({
 }) {
   return (
     <div className={`flex flex-col gap-4 ${className}`}>
-      <p className="flex items-center gap-3 type-eyebrow text-action">
+      {/* Ревью [KB 05]: CTA-цвет не тратится на декор — eyebrow нейтральный */}
+      <p className="flex items-center gap-3 type-eyebrow text-ink-soft">
         <span aria-hidden className="h-px w-10 shrink-0 bg-border-subtle" />
         {eyebrow}
       </p>

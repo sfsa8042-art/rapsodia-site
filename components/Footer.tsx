@@ -30,7 +30,7 @@ export default function Footer() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="inline-flex min-h-11 items-center type-caption text-ink-soft underline-offset-4 hover:text-ink hover:underline"
+                  className="inline-flex min-h-11 items-center type-caption text-ink-soft underline-offset-4 transition-colors duration-(--motion-fast) hover:text-ink hover:underline"
                 >
                   {item.label}
                 </Link>
@@ -47,14 +47,14 @@ export default function Footer() {
             <a
               href={site.telegram}
               rel="noopener noreferrer"
-              className="inline-flex min-h-11 items-center type-caption text-ink-soft underline-offset-4 hover:text-ink hover:underline"
+              className="inline-flex min-h-11 items-center type-caption text-ink-soft underline-offset-4 transition-colors duration-(--motion-fast) hover:text-ink hover:underline"
             >
               Telegram
             </a>
             <a
               href={site.vk}
               rel="noopener noreferrer"
-              className="inline-flex min-h-11 items-center type-caption text-ink-soft underline-offset-4 hover:text-ink hover:underline"
+              className="inline-flex min-h-11 items-center type-caption text-ink-soft underline-offset-4 transition-colors duration-(--motion-fast) hover:text-ink hover:underline"
             >
               VK
             </a>
