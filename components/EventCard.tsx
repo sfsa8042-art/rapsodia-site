@@ -21,7 +21,8 @@ export function formatDate(iso: string): string {
 export default function EventCard({ event }: { event: AfishaEvent }) {
   return (
     <article className="flex flex-col gap-3 rounded-lg border border-border-subtle bg-surface p-6 transition-colors duration-(--motion-fast) hover:border-ink-soft">
-      <p className="type-numeric-display text-action">
+      {/* Redesign v3: дата — ember, тёплый факт; действие остаётся зелёным */}
+      <p className="type-numeric-display text-ember">
         {formatDate(event.date)} · {event.time}
       </p>
       <h3 className="card-title line-clamp-2">{event.title}</h3>

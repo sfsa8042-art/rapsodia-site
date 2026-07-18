@@ -8,7 +8,7 @@
  */
 
 import type { Metadata } from "next";
-import { Container, ButtonLink } from "@/components/ui";
+import { Container, ButtonLink, PageHeader } from "@/components/ui";
 import MobileActionBar from "@/components/MobileActionBar";
 import MapEmbed from "@/components/MapEmbed";
 import { site, pg1 } from "@/lib/content";
@@ -25,17 +25,21 @@ export default function ContactsPage() {
     <main>
       <section className="section-base" aria-labelledby="contacts-h1">
         <Container className="flex flex-col gap-8">
-          <h1 id="contacts-h1" className="type-display">
+          {/* Executive Polish: eyebrow больше не дублирует адрес строкой
+              ниже — несёт новый факт (часы) */}
+          <PageHeader eyebrow="Пн–Чт, Вс до 23:00 · Пт–Сб до 04:00" id="contacts-h1">
             Как до нас добраться
-          </h1>
+          </PageHeader>
 
           <div className="grid gap-10 lg:grid-cols-2">
             <div className="flex flex-col gap-4">
               <p className="type-body">{site.address}</p>
-              <a href={site.phoneHref} className="type-numeric-display text-action hover:underline">
+              {/* Executive Polish: телефон/почта — нейтральные, зелёный
+                  остаётся только у кнопки маршрута (одна точка конверсии) */}
+              <a href={site.phoneHref} className="type-numeric-display text-ink hover:underline">
                 {site.phone}
               </a>
-              <a href={site.emailHref} className="type-body text-action underline-offset-4 hover:underline">
+              <a href={site.emailHref} className="type-body text-ink underline-offset-4 hover:underline">
                 {site.email}
               </a>
               <a
@@ -46,14 +50,15 @@ export default function ContactsPage() {
               >
                 Проложить маршрут
               </a>
-              <div className="flex flex-wrap gap-5">
-                <a href={site.telegram} rel="noopener noreferrer" className="type-label text-action underline-offset-4 hover:underline">
+              {/* Аудит-2: тач-таргет ≥44px — min-h-11 у текстовых ссылок */}
+              <div className="flex flex-wrap gap-x-5">
+                <a href={site.telegram} rel="noopener noreferrer" className="inline-flex min-h-11 items-center type-label text-action underline-offset-4 hover:underline">
                   Telegram
                 </a>
-                <a href={site.vk} rel="noopener noreferrer" className="type-label text-action underline-offset-4 hover:underline">
+                <a href={site.vk} rel="noopener noreferrer" className="inline-flex min-h-11 items-center type-label text-action underline-offset-4 hover:underline">
                   VK
                 </a>
-                <a href={site.gisUrl} rel="noopener noreferrer" className="type-label text-action underline-offset-4 hover:underline">
+                <a href={site.gisUrl} rel="noopener noreferrer" className="inline-flex min-h-11 items-center type-label text-action underline-offset-4 hover:underline">
                   Открыть в 2ГИС
                 </a>
               </div>

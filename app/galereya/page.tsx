@@ -6,7 +6,7 @@
 
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Container, ButtonLink } from "@/components/ui";
+import { Container, ButtonLink, PageHeader } from "@/components/ui";
 import MediaModule from "@/components/MediaModule";
 import MobileActionBar from "@/components/MobileActionBar";
 import { gallery } from "@/content/gallery";
@@ -24,9 +24,9 @@ export default function GalleryPage() {
     <main>
       <section className="section-base" aria-labelledby="gal-h1">
         <Container className="flex flex-col gap-8">
-          <h1 id="gal-h1" className="type-display">
+          <PageHeader eyebrow="Зал · Кухня · Сцена" id="gal-h1">
             Зал, кухня и сцена — как есть
-          </h1>
+          </PageHeader>
 
           {gallery.length === 0 ? (
             <div className="grid gap-6 sm:grid-cols-2">

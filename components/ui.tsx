@@ -85,6 +85,92 @@ export function Button({
   );
 }
 
+/*
+ * Редакционная шапка секции [Redesign v3, Design Plan §5]: hairline-линейка
+ * + моно-индекс + заголовок-антиква. Ember — только декор; в блоках с
+ * primary-кнопкой не используется (§11.4) — там обычный type-h2.
+ */
+export function SectionHeading({
+  index,
+  id,
+  className = "",
+  children,
+}: {
+  index: string;
+  id: string;
+  className?: string;
+  children: ReactNode;
+}) {
+  return (
+    <div className={`flex flex-col gap-3 ${className}`}>
+      <span aria-hidden className="flex items-center gap-3">
+        <span className="h-px w-8 bg-ember/70" />
+        <span className="type-eyebrow text-ember">{index}</span>
+      </span>
+      <h2 id={id} className="type-h2">
+        {children}
+      </h2>
+    </div>
+  );
+}
+
+/*
+ * Редакционная шапка страницы [Redesign v3]: eyebrow с линейкой + h1-антиква.
+ * Единый вход всех внутренних страниц — тот же язык, что hero главной.
+ */
+export function PageHeader({
+  eyebrow,
+  id,
+  className = "",
+  children,
+}: {
+  eyebrow: string;
+  id: string;
+  className?: string;
+  children: ReactNode;
+}) {
+  return (
+    <div className={`flex flex-col gap-4 ${className}`}>
+      {/* Ревью [KB 05]: CTA-цвет не тратится на декор — eyebrow нейтральный */}
+      <p className="flex items-center gap-3 type-eyebrow text-ink-soft">
+        <span aria-hidden className="h-px w-10 shrink-0 bg-border-subtle" />
+        {eyebrow}
+      </p>
+      <h1 id={id} className="type-display">
+        {children}
+      </h1>
+    </div>
+  );
+}
+
+/*
+ * Executive Polish: вторая, более редкая шапка — для эмоциональных
+ * страниц (О нас), где линейка+индекс PageHeader/SectionHeading уже
+ * встречены на утилитарных страницах и начинают читаться как один
+ * компонент, применённый везде. Здесь вместо hairline+caps — курсивная
+ * антиква-затравка над заголовком, без линии и без мото-индекса.
+ */
+export function PageHeaderEditorial({
+  lead,
+  id,
+  className = "",
+  children,
+}: {
+  lead: string;
+  id: string;
+  className?: string;
+  children: ReactNode;
+}) {
+  return (
+    <div className={`flex flex-col gap-2 ${className}`}>
+      <p className="type-h2 italic text-ember">{lead}</p>
+      <h1 id={id} className="type-display">
+        {children}
+      </h1>
+    </div>
+  );
+}
+
 /* CMP-7 Divider — решётчатый мотив, только между section.dense [DS 5] */
 export function GrillDivider() {
   return (

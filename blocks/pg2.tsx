@@ -5,7 +5,7 @@
  */
 
 import { Suspense } from "react";
-import { ButtonLink, Container } from "@/components/ui";
+import { ButtonLink, Container, SectionHeading } from "@/components/ui";
 import MediaModule from "@/components/MediaModule";
 import Reveal from "@/components/Reveal";
 import BanketForm from "@/components/BanketForm";
@@ -19,7 +19,11 @@ export function BanketHeroBlock() {
     <section className="section-loose overflow-x-clip max-lg:pt-8" aria-labelledby="pg2-h1">
       <Container className="grid items-center gap-10 lg:grid-cols-12">
         <div className="flex flex-col gap-6 lg:col-span-6">
-          <p className="type-eyebrow text-action">{pg2.hero.eyebrow}</p>
+          {/* Ревью [KB 05]: CTA-цвет только на конверсии — eyebrow нейтральный */}
+          <p className="flex items-center gap-3 type-eyebrow text-ink-soft">
+            <span aria-hidden className="h-px w-10 shrink-0 bg-border-subtle" />
+            {pg2.hero.eyebrow}
+          </p>
           <h1 id="pg2-h1" className="type-display">
             {pg2.hero.h1}
           </h1>
@@ -50,9 +54,9 @@ export function ProcessBlock() {
     <section className="section-dense" aria-labelledby="process-h2">
       <Container>
         <Reveal className="grid gap-x-10 gap-y-4 lg:grid-cols-12">
-          <h2 id="process-h2" className="type-h2 lg:col-span-5">
+          <SectionHeading index="01" id="process-h2" className="lg:col-span-5">
             {pg2.process.h2}
-          </h2>
+          </SectionHeading>
           <div className="flex flex-col gap-4 lg:col-span-6 lg:col-start-7">
             <p className="type-body text-ink-soft">{pg2.process.body}</p>
             <p className="type-caption text-ink-soft">{pg2.process.stepsNote}</p>
@@ -69,9 +73,9 @@ export function BanketTrustBlock() {
     <section className="section-dense" aria-labelledby="pg2-trust-h2">
       <Container className="flex flex-col gap-6">
         <Reveal>
-          <h2 id="pg2-trust-h2" className="type-h2">
+          <SectionHeading index="02" id="pg2-trust-h2">
             {pg2.trust.h2}
-          </h2>
+          </SectionHeading>
         </Reveal>
         <Reveal>
           <MediaModule
@@ -93,9 +97,9 @@ export function BanketContactBlock() {
     <section className="section-dense" aria-labelledby="pg2-contact-h2">
       <Container>
         <Reveal className="grid gap-x-10 gap-y-4 lg:grid-cols-12">
-          <h2 id="pg2-contact-h2" className="type-h2 lg:col-span-5">
+          <SectionHeading index="03" id="pg2-contact-h2" className="lg:col-span-5">
             {pg2.contact.h2}
-          </h2>
+          </SectionHeading>
           <div className="flex flex-col gap-4 lg:col-span-6 lg:col-start-7">
             <p className="type-body text-ink-soft">{pg2.contact.body}</p>
             <a

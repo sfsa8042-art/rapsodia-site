@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Golos_Text, Inter, PT_Mono } from "next/font/google";
+import { Cormorant, Inter, PT_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -7,15 +7,15 @@ import { seo, site } from "@/lib/content";
 
 /*
  * Шрифтовой конвейер [DS 3]: subset кириллица+латиница, woff2,
- * font-display: swap, self-hosting через next/font (нет внешних запросов,
- * есть автоматический size-adjust фолбэк — CLS от свопа устранён).
- * PT Mono существует только в 400 — отступление от DS (спец: 500),
- * зафиксировано в реестре отступлений Development Package.
+ * font-display: swap, self-hosting через next/font.
+ * Заголовки — Cormorant (изящная антиква, тёплый ресторанный характер;
+ * запрос владельца на эстетику). Тело — Inter, цифры — PT Mono.
  */
-const golos = Golos_Text({
+const cormorant = Cormorant({
   subsets: ["cyrillic", "latin"],
-  weight: ["600", "700"],
-  variable: "--font-golos",
+  weight: ["500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-cormorant",
   display: "swap",
 });
 
@@ -101,10 +101,16 @@ export default function RootLayout({
   return (
     // suppressHydrationWarning: класс js и data-theme ставятся инлайн-
     // скриптом до гидрации — ожидаемое расхождение, не баг
-    <html lang="ru" suppressHydrationWarning>
-      <body
-        className={`${golos.variable} ${inter.variable} ${ptMono.variable}`}
-      >
+    // Шрифтовые переменные — на <html>, не на <body>: роли --font-heading/
+    // --font-body объявлены в :root и ссылаются на них; переменная body
+    // на уровне html не видна → роль вычислялась в guaranteed-invalid
+    // (заголовки падали на системный гротеск)
+    <html
+      lang="ru"
+      suppressHydrationWarning
+      className={`${cormorant.variable} ${inter.variable} ${ptMono.variable}`}
+    >
+      <body>
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
         <script
           type="application/ld+json"

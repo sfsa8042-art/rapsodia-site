@@ -73,7 +73,7 @@ export default function Header() {
       <div className="mx-auto flex h-16 w-full max-w-[1280px] items-center gap-4 px-4 lg:h-20 lg:px-8">
         <Link href="/" className="flex shrink-0 items-center gap-3" aria-label="Рапсодия — на главную">
           <LogoMark />
-          <span className="type-label hidden text-ink sm:block">Рапсодия</span>
+          <span className="type-wordmark hidden text-ink sm:block">Рапсодия</span>
         </Link>
 
         <nav aria-label="Основная навигация" className="mx-auto hidden lg:block">
@@ -128,7 +128,7 @@ export default function Header() {
         <div className="flex h-16 items-center justify-between px-4">
           <Link href="/" onClick={closeMenu} className="flex items-center gap-3">
             <LogoMark />
-            <span className="type-label">Рапсодия</span>
+            <span className="type-wordmark">Рапсодия</span>
           </Link>
           <button
             type="button"

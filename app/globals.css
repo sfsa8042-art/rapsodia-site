@@ -25,6 +25,11 @@
   /* Логотип: заливки фирменного знака [БРЕНД] */
   --logo-green: #2d4829; /* green-800 — на светлой среде 8.24:1 */
   --logo-cream: #f1e4d4; /* кремовая деталь */
+
+  /* Ember — тёплый редакционный акцент (Redesign v3): курсив в заголовках,
+     цифры фактов, линейки. Никогда не кнопка — CTA-закон остаётся за
+     зелёным. 5.44:1 на env-bg, 6.07:1 на surface — AA */
+  --accent-ember: #9c3f1a;
 }
 
 [data-theme="dark"] {
@@ -42,6 +47,9 @@
   /* Тёмный вечерний режим: зелёный знак осветляется до green-400
      (4.98:1 на #272B36), иначе тонет; тот же приём, что у цвета действия */
   --logo-green: #6fa765;
+
+  /* Тёплый жар для тёмной среды — 6.72:1 на env-bg, 7.92:1 на surface */
+  --accent-ember: #e8a470;
 }
 
 @theme inline {
@@ -54,8 +62,9 @@
   --color-action-hover: var(--action-hover);
   --color-border-subtle: var(--border-subtle);
   --color-error: var(--status-error);
+  --color-ember: var(--accent-ember);
 
-  --font-heading: var(--font-golos), system-ui, sans-serif;
+  --font-heading: var(--font-cormorant), "Georgia", "Times New Roman", serif;
   --font-body: var(--font-inter), system-ui, sans-serif;
   --font-numeric: var(--font-ptmono), "Courier New", monospace;
 
@@ -65,6 +74,13 @@
 }
 
 :root {
+  /* Шрифтовые роли — в :root, не только в @theme inline: inline-режим
+     не эмитит кастом-свойства, и var(--font-heading) в типографских
+     классах ниже разрешался в пустоту (системный гротеск) */
+  --font-heading: var(--font-cormorant), "Georgia", "Times New Roman", serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
+  --font-numeric: var(--font-ptmono), "Courier New", monospace;
+
   /* Моушн [DS 2.2 / VD] */
   --motion-fast: 150ms;
   --motion-base: 300ms;
@@ -111,6 +127,13 @@ div[id] {
   scroll-margin-top: 96px;
 }
 
+/* Аудит-1: Tailwind 4 preflight не ставит pointer на кнопки (в отличие
+   от v3) — «clickable things look clickable» [KB 07/11] */
+button:not(:disabled),
+[role="button"]:not(:disabled) {
+  cursor: pointer;
+}
+
 /* Фокус-инвариант: видим на каждом интерактиве [DS 11] */
 :focus-visible {
   outline: 2px solid var(--focus-ring);
@@ -118,26 +141,51 @@ div[id] {
   border-radius: var(--radius-sm);
 }
 
+/* Ревью: на фото-плитках кольцо среды (тёмные чернила) невидимо на
+   тёмном кадре — белое. Литерал, не var: @theme inline не эмитит
+   --color-white (та же ловушка, что со шрифтовыми ролями) */
+.focus-ring-photo:focus-visible {
+  outline-color: #fff;
+}
+
 /* ---------- Типографские роли [DS 3] ---------- */
 
+/* Кегли подняты ~30% против гротеска Golos — антиква Cormorant
+   оптически мельче при том же px [Redesign v3, Design Plan §4] */
 .type-display {
   font-family: var(--font-heading);
-  font-size: clamp(28px, 21.4px + 1.77vw, 44px); /* 28@375 → 44@1280 */
-  line-height: 1.15;
+  font-size: clamp(32px, 22px + 2.65vw, 56px); /* 32@375 → 56@1280 */
+  line-height: 1.08;
   font-weight: 700;
   max-width: 20ch;
   hyphens: none;
 }
 
-/* type.hero — усиленный кегль только для hero главной (визуальный акцент,
-   запрос владельца «больше визуала»). 40@375 → 72@1280. */
+/* type.hero — усиленный кегль только для hero главной. 40@375 → 88@1280. */
 .type-hero {
   font-family: var(--font-heading);
-  font-size: clamp(34px, 20px + 4vw, 72px); /* 34@375 → 72@1280 */
-  line-height: 1.04;
+  font-size: clamp(40px, 20px + 5.3vw, 88px); /* 40@375 → 88@1280 */
+  line-height: 1.05; /* Аудит-7: диакритика «Й» на 88px впритык при 1.02 */
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   hyphens: none;
+}
+
+/* Курсивный ember-акцент в заголовках: не более одного на экран
+   [Design Plan §11.2]; смысл не только цветом — это <em> */
+.accent-italic {
+  font-style: italic;
+  font-weight: 600;
+  color: var(--accent-ember);
+}
+
+/* Словознак «Рапсодия» в шапке/подвале — антиква, бренд-голос */
+.type-wordmark {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: 0.01em;
 }
 
 /* Надзаголовок: мелкий трекинг-капс над hero-заголовком */
@@ -151,32 +199,32 @@ div[id] {
 
 .type-h2 {
   font-family: var(--font-heading);
-  font-size: 22px;
-  line-height: 1.3;
+  font-size: 28px;
+  line-height: 1.2;
   font-weight: 600;
   max-width: 40ch;
 }
 @media (min-width: 1024px) {
   .type-h2 {
-    font-size: 26px;
+    font-size: 34px;
   }
 }
 @media (min-width: 1280px) {
   .type-h2 {
-    font-size: 30px;
+    font-size: 40px;
   }
 }
 
 /* type.h2, контекстно уменьшенный для карточек [DS 5: CMP-5/6] */
 .card-title {
   font-family: var(--font-heading);
-  font-size: 20px;
-  line-height: 1.3;
+  font-size: 22px;
+  line-height: 1.25;
   font-weight: 600;
 }
 @media (min-width: 1024px) {
   .card-title {
-    font-size: 24px;
+    font-size: 28px;
   }
 }
 

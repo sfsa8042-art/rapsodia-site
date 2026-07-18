@@ -5,10 +5,10 @@
  */
 
 import type { Metadata } from "next";
-import { Container, ButtonLink } from "@/components/ui";
+import { Container, ButtonLink, PageHeaderEditorial } from "@/components/ui";
 import MediaModule from "@/components/MediaModule";
 import MobileActionBar from "@/components/MobileActionBar";
-import { pg1, pg6, site } from "@/lib/content";
+import { pg1, pg6 } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "О ресторане — кухня и сцена как одна идея | Рапсодия, Зеленоград",
@@ -23,15 +23,18 @@ export default function AboutPage() {
       <section className="section-base" aria-labelledby="about-h1">
         <Container className="grid items-center gap-10 lg:grid-cols-12">
           <div className="flex flex-col gap-6 lg:col-span-6">
-            <h1 id="about-h1" className="type-display">
+            {/* Executive Polish: вторая форма шапки (без hairline/индекса) —
+                eyebrow больше не пересказывает H1, несёт новый факт */}
+            <PageHeaderEditorial lead="Открылись в 2025 году" id="about-h1">
               {pg6.h1}
-            </h1>
+            </PageHeaderEditorial>
             {pg6.body.map((p) => (
               <p key={p.slice(0, 20)} className="type-body text-ink-soft">
                 {p}
               </p>
             ))}
-            <p className="type-caption text-ink-soft">{site.founded}</p>
+            {/* Executive Polish: факт «основан в 2025» теперь несёт
+                eyebrow — вторая копия строкой ниже была бы дублем */}
             <ButtonLink href="/#bron" className="self-start">
               {pg1.hero.cta}
             </ButtonLink>
