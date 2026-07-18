@@ -8,7 +8,7 @@
 import { Suspense } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ButtonLink, Container } from "@/components/ui";
+import { ButtonLink, Container, SectionHeading } from "@/components/ui";
 import MediaModule from "@/components/MediaModule";
 import Reveal from "@/components/Reveal";
 import EventCard from "@/components/EventCard";
@@ -27,11 +27,16 @@ export function HeroBlock() {
       <Container className="grid items-center gap-8 lg:grid-cols-12 lg:gap-10">
         {/* Мобайл: текст первым — слоган и оффер сразу видны, не под сгибом */}
         <div className="flex flex-col gap-5 lg:col-span-5 lg:gap-6">
-          <p className="type-eyebrow text-action">{pg1.hero.eyebrow}</p>
+          <p className="flex items-center gap-3 type-eyebrow text-action">
+            <span aria-hidden className="h-px w-10 shrink-0 bg-border-subtle" />
+            {pg1.hero.eyebrow}
+          </p>
+          {/* Redesign v3: 2-я строка слогана — антиква-курсив ember
+             («живая музыка» — рукописная интонация против прямого огня) */}
           <h1 id="hero-h1" className="type-hero">
             {pg1.hero.h1line1}
             <br />
-            <span className="text-action">{pg1.hero.h1line2}</span>
+            <em className="accent-italic">{pg1.hero.h1line2}</em>
           </h1>
           <p className="type-lead max-w-[46ch] text-ink-soft">{pg1.hero.lead}</p>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
@@ -69,7 +74,7 @@ export function StatsBand() {
       <Container className="grid grid-cols-2 gap-x-6 gap-y-8 py-10 lg:grid-cols-4 lg:py-12">
         {pg1.stats.map((s) => (
           <div key={s.label} className="flex flex-col gap-1">
-            <span className="type-numeric-display text-action">{s.value}</span>
+            <span className="type-numeric-display text-ember">{s.value}</span>
             <span className="type-caption text-ink-soft">{s.label}</span>
           </div>
         ))}
@@ -87,10 +92,10 @@ export function AtmosphereMosaic() {
     <section className="section-dense" aria-labelledby="atmo-h2">
       <Container className="flex flex-col gap-8">
         <Reveal className="grid gap-x-10 gap-y-3 lg:grid-cols-12">
-          <h2 id="atmo-h2" className="type-h2 lg:col-span-5">
+          <SectionHeading index="01" id="atmo-h2" className="lg:col-span-5">
             {pg1.atmosphere.h2}
-          </h2>
-          <p className="type-body text-ink-soft lg:col-span-6 lg:col-start-7">
+          </SectionHeading>
+          <p className="type-body self-end text-ink-soft lg:col-span-6 lg:col-start-7">
             {pg1.atmosphere.lead}
           </p>
         </Reveal>
@@ -155,7 +160,8 @@ export function AtmosphereBand() {
         <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-black/10" />
         <div className="absolute inset-x-0 bottom-0">
           <Container className="pb-10 lg:pb-14">
-            <p className="type-h2 max-w-[24ch] text-white">{pg1.band.caption}</p>
+            {/* Redesign v3: антиква-курсив — эмоциональная подпись */}
+            <p className="type-h2 max-w-[24ch] text-white italic">{pg1.band.caption}</p>
           </Container>
         </div>
       </div>
@@ -181,9 +187,9 @@ export function MechanicsBlock() {
         </div>
         <div className="flex flex-col gap-4 lg:col-span-5">
           <Reveal>
-            <h2 id="mech-h2" className="type-h2">
+            <SectionHeading index="02" id="mech-h2">
               {pg1.mechanics.h2}
-            </h2>
+            </SectionHeading>
             <p className="type-body mt-4 text-ink-soft">{pg1.mechanics.body}</p>
           </Reveal>
         </div>
@@ -206,9 +212,9 @@ export function AfishaTeaserBlock() {
            * асимметрия зеркальна Механике (там фото слева, тут справа) */
           <div className="grid items-center gap-10 lg:grid-cols-12">
             <Reveal className="flex flex-col gap-4 lg:col-span-5">
-              <h2 id="afisha-h2" className="type-h2">
+              <SectionHeading index="03" id="afisha-h2">
                 {pg1.afishaMin.h2}
-              </h2>
+              </SectionHeading>
               <p className="type-body text-ink-soft">{pg1.afishaMin.body}</p>
               <a
                 href={site.telegram}
@@ -230,9 +236,9 @@ export function AfishaTeaserBlock() {
           </div>
         ) : (
           <Reveal className="flex flex-col gap-8">
-            <h2 id="afisha-h2" className="type-h2">
+            <SectionHeading index="03" id="afisha-h2">
               {pg1.afishaFull.h2}
-            </h2>
+            </SectionHeading>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {events.map((e) => (
                 <EventCard key={e.date + e.title} event={e} />
@@ -252,9 +258,9 @@ export function OccasionBlock() {
     <section className="section-dense" aria-labelledby="occasion-h2">
       <Container className="grid items-center gap-10 lg:grid-cols-12">
         <Reveal className="flex flex-col gap-4 lg:col-span-5 max-lg:order-2">
-          <h2 id="occasion-h2" className="type-h2">
+          <SectionHeading index="04" id="occasion-h2">
             {pg1.occasion.h2}
-          </h2>
+          </SectionHeading>
           <p className="type-body text-ink-soft">{pg1.occasion.body}</p>
         </Reveal>
         <Reveal className="lg:col-span-7 max-lg:order-1">
@@ -278,9 +284,9 @@ export function TrustBlock() {
     <section className="section-dense" aria-labelledby="trust-h2">
       <Container>
         <Reveal className="grid gap-x-10 gap-y-4 lg:grid-cols-12">
-          <h2 id="trust-h2" className="type-h2 lg:col-span-5">
+          <SectionHeading index="05" id="trust-h2" className="lg:col-span-5">
             {pg1.trust.h2}
-          </h2>
+          </SectionHeading>
           <div className="flex flex-col gap-4 lg:col-span-6 lg:col-start-7">
             <p className="type-body text-ink-soft">{pg1.trust.body}</p>
             <a

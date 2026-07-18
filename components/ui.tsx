@@ -85,6 +85,35 @@ export function Button({
   );
 }
 
+/*
+ * Редакционная шапка секции [Redesign v3, Design Plan §5]: hairline-линейка
+ * + моно-индекс + заголовок-антиква. Ember — только декор; в блоках с
+ * primary-кнопкой не используется (§11.4) — там обычный type-h2.
+ */
+export function SectionHeading({
+  index,
+  id,
+  className = "",
+  children,
+}: {
+  index: string;
+  id: string;
+  className?: string;
+  children: ReactNode;
+}) {
+  return (
+    <div className={`flex flex-col gap-3 ${className}`}>
+      <span aria-hidden className="flex items-center gap-3">
+        <span className="h-px w-8 bg-ember/70" />
+        <span className="type-eyebrow text-ember">{index}</span>
+      </span>
+      <h2 id={id} className="type-h2">
+        {children}
+      </h2>
+    </div>
+  );
+}
+
 /* CMP-7 Divider — решётчатый мотив, только между section.dense [DS 5] */
 export function GrillDivider() {
   return (
