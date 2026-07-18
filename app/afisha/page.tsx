@@ -4,10 +4,10 @@
  */
 
 import type { Metadata } from "next";
-import { Container, ButtonLink, PageHeader } from "@/components/ui";
+import { Container, ButtonLink, PageHeader, SectionHeading } from "@/components/ui";
 import EventCard from "@/components/EventCard";
 import MobileActionBar from "@/components/MobileActionBar";
-import { upcoming } from "@/content/afisha";
+import { upcoming, voices } from "@/content/afisha";
 import { misc, site, pg1 } from "@/lib/content";
 
 /* DEF-5 QA: см. app/page.tsx */
@@ -51,6 +51,53 @@ export default function AfishaPage() {
               ))}
             </div>
           )}
+        </Container>
+      </section>
+
+      {/* Голоса выходных [ФАКТУРА: карточки /afisha живого rapsodia.ru] —
+          редакционная «афишная тумба»: крупные имена-антиква через
+          ember-разделители, без выдуманных дат; актуальная пара
+          пятница-суббота — в Telegram [UX 8] */}
+      <section className="section-base border-y border-border-subtle bg-surface" aria-labelledby="voices-h2">
+        <Container className="flex flex-col gap-8">
+          <SectionHeading index="ПТ · СБ" id="voices-h2">
+            Голоса музыкальных выходных
+          </SectionHeading>
+          <ul className="flex max-w-[20ch] flex-wrap items-baseline gap-x-5 gap-y-2 sm:max-w-none">
+            {voices.map((v, i) => (
+              <li key={v.name} className="flex items-baseline gap-x-5">
+                <span className="type-display italic">{v.name}</span>
+                {/* Разделитель только в строчной раскладке ≥sm: на мобильном
+                    имена — столбец, точки в концах строк повисали бы */}
+                {i < voices.length - 1 && (
+                  <span aria-hidden className="type-display hidden text-ember sm:inline">
+                    ·
+                  </span>
+                )}
+              </li>
+            ))}
+          </ul>
+          <div className="flex flex-col gap-3">
+            {voices.map(
+              (v) =>
+                "note" in v && (
+                  <p key={v.name} className="type-body text-ink-soft">
+                    {v.name} — {v.note}.
+                  </p>
+                ),
+            )}
+            <p className="type-body max-w-[60ch] text-ink-soft">
+              Сцена и живой звук работают по пятницам и субботам. Кто поёт в
+              ближайшие выходные — публикуем в Telegram за несколько дней.
+            </p>
+            <a
+              href={site.telegram}
+              rel="noopener noreferrer"
+              className="type-label self-start text-action underline-offset-4 hover:underline"
+            >
+              Афиша выходных в Telegram →
+            </a>
+          </div>
         </Container>
       </section>
 
