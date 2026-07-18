@@ -65,7 +65,11 @@ export const voices = [
 ] as const;
 
 export function upcoming(now = new Date()): AfishaEvent[] {
-  const today = now.toISOString().slice(0, 10);
+  // Аудит-4: «сегодня» — в часовом поясе ресторана, не UTC (toISOString
+  // держал прошедший вечер в афише до 03:00 МСК); en-CA → YYYY-MM-DD
+  const today = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Europe/Moscow",
+  }).format(now);
   return afisha
     .filter((e) => e.date >= today)
     .sort((a, b) => a.date.localeCompare(b.date));

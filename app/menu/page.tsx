@@ -52,7 +52,8 @@ export default function MenuPage() {
                десктопе (multicol, как разворот меню), секции с моно-
                индексами, позиции с точечным лидером название …… цена */
             <div className="flex flex-col gap-2">
-              <div className="lg:columns-2 lg:gap-16">
+              {/* Аудит-3: разворот карты уже с планшета 768 */}
+              <div className="md:columns-2 md:gap-12 lg:gap-16">
               {menu.map((section, i) => (
                 <section key={section.title} aria-label={section.title} className="mb-14">
                   <SectionHeading

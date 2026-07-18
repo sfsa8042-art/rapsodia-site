@@ -99,10 +99,11 @@ export function AtmosphereMosaic() {
             {pg1.atmosphere.lead}
           </p>
         </Reveal>
-        <Reveal className="grid gap-4 lg:grid-cols-3 lg:grid-rows-2">
+        <Reveal className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2">
           {/* Мобайл: большая плитка выше второстепенных (иерархия);
+              планшет 768 (Аудит-3): большая на всю ширину, две в ряд под ней;
               десктоп: span 2×2 */}
-          <MosaicTile tile={big} className="min-h-80 lg:col-span-2 lg:row-span-2 lg:min-h-[30rem]" priority />
+          <MosaicTile tile={big} className="min-h-80 md:col-span-2 lg:row-span-2 lg:min-h-[30rem]" priority />
           <MosaicTile tile={rest[0]} className="min-h-64" />
           <MosaicTile tile={rest[1]} className="min-h-64" />
         </Reveal>

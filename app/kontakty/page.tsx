@@ -46,14 +46,15 @@ export default function ContactsPage() {
               >
                 Проложить маршрут
               </a>
-              <div className="flex flex-wrap gap-5">
-                <a href={site.telegram} rel="noopener noreferrer" className="type-label text-action underline-offset-4 hover:underline">
+              {/* Аудит-2: тач-таргет ≥44px — min-h-11 у текстовых ссылок */}
+              <div className="flex flex-wrap gap-x-5">
+                <a href={site.telegram} rel="noopener noreferrer" className="inline-flex min-h-11 items-center type-label text-action underline-offset-4 hover:underline">
                   Telegram
                 </a>
-                <a href={site.vk} rel="noopener noreferrer" className="type-label text-action underline-offset-4 hover:underline">
+                <a href={site.vk} rel="noopener noreferrer" className="inline-flex min-h-11 items-center type-label text-action underline-offset-4 hover:underline">
                   VK
                 </a>
-                <a href={site.gisUrl} rel="noopener noreferrer" className="type-label text-action underline-offset-4 hover:underline">
+                <a href={site.gisUrl} rel="noopener noreferrer" className="inline-flex min-h-11 items-center type-label text-action underline-offset-4 hover:underline">
                   Открыть в 2ГИС
                 </a>
               </div>

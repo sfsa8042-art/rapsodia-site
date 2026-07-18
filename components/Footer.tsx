@@ -24,12 +24,13 @@ export default function Footer() {
         <nav aria-label="Навигация в подвале">
           {/* Polish: колоночный поток — каждая колонка читается сверху вниз
               в порядке основной навигации (раньше row-major путал порядок) */}
-          <ul className="grid grid-flow-col grid-rows-4 gap-x-8 gap-y-3">
+          {/* Аудит-2: тач-таргет ≥44px — min-h-11 вместо вертикальных gap */}
+          <ul className="grid grid-flow-col grid-rows-4 gap-x-8">
             {nav.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="type-caption text-ink-soft underline-offset-4 hover:text-ink hover:underline"
+                  className="inline-flex min-h-11 items-center type-caption text-ink-soft underline-offset-4 hover:text-ink hover:underline"
                 >
                   {item.label}
                 </Link>
@@ -42,18 +43,18 @@ export default function Footer() {
           <a href={site.phoneHref} className="type-numeric text-ink hover:underline">
             {site.phone}
           </a>
-          <div className="flex gap-4">
+          <div className="flex gap-x-4">
             <a
               href={site.telegram}
               rel="noopener noreferrer"
-              className="type-caption text-ink-soft underline-offset-4 hover:text-ink hover:underline"
+              className="inline-flex min-h-11 items-center type-caption text-ink-soft underline-offset-4 hover:text-ink hover:underline"
             >
               Telegram
             </a>
             <a
               href={site.vk}
               rel="noopener noreferrer"
-              className="type-caption text-ink-soft underline-offset-4 hover:text-ink hover:underline"
+              className="inline-flex min-h-11 items-center type-caption text-ink-soft underline-offset-4 hover:text-ink hover:underline"
             >
               VK
             </a>

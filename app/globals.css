@@ -127,6 +127,13 @@ div[id] {
   scroll-margin-top: 96px;
 }
 
+/* Аудит-1: Tailwind 4 preflight не ставит pointer на кнопки (в отличие
+   от v3) — «clickable things look clickable» [KB 07/11] */
+button:not(:disabled),
+[role="button"]:not(:disabled) {
+  cursor: pointer;
+}
+
 /* Фокус-инвариант: видим на каждом интерактиве [DS 11] */
 :focus-visible {
   outline: 2px solid var(--focus-ring);
@@ -151,7 +158,7 @@ div[id] {
 .type-hero {
   font-family: var(--font-heading);
   font-size: clamp(40px, 20px + 5.3vw, 88px); /* 40@375 → 88@1280 */
-  line-height: 1.02;
+  line-height: 1.05; /* Аудит-7: диакритика «Й» на 88px впритык при 1.02 */
   font-weight: 700;
   letter-spacing: -0.01em;
   hyphens: none;
